@@ -1,5 +1,5 @@
-import MyAdmin from "./admin";
+import MyAdmin from './admin'
 
-const App = () => <MyAdmin />;
+const App = () => <MyAdmin />
 
-export default App;
+export default App

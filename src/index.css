@@ -1,3 +1,66 @@
-body {
-    margin: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: 'Mulish', sans-serif !important;
+}
+
+input {
+    outline: 0;
+    background-color: transparent !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: inherit;
+    -webkit-box-shadow: 0 0 0px 40rem #ffff inset;
+}
+
+.loginpage-img1 {
+    position: absolute;
+    left: 12.22%;
+    right: 63.06%;
+    top: 18.67%;
+    bottom: 38%;
+}
+
+.loginpage-img2 {
+    position: absolute;
+    left: 48.75%;
+    right: 11.11%;
+    top: 6.78%;
+    bottom: 78.56%;
+}
+
+.loginpage-img3 {
+    position: absolute;
+    left: 53.75%;
+    right: 18.47%;
+    top: 37.11%;
+    bottom: 24.56%;
+}
+
+.loginpage-logo {
+    position: absolute;
+    left: 12.22%;
+    right: 78.06%;
+    top: 77.78%;
+    bottom: 16.89%;
+}
+
+.loginpage-info {
+    position: absolute;
+    left: 12.22%;
+    right: 18.47%;
+    top: 84%;
+    bottom: 7.11%;
+}
+
+.loginform-eye {
+    position: absolute;
+    right: 5.21%;
+    top: 26.04%;
+    bottom: 28.13%;
 }
