@@ -2,13 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
 * {
     font-family: 'Mulish', sans-serif !important;
+    box-sizing: border-box !important;
 }
 
 input {
     outline: 0;
-    background-color: transparent !important;
+    background-color: white !important;
+    box-sizing: border-box !important;
 }
 
 input:-webkit-autofill,
@@ -63,4 +71,16 @@ input:-webkit-autofill:focus {
     right: 5.21%;
     top: 26.04%;
     bottom: 28.13%;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 2px;
+    background-color: #E7E8EF;
+    border-radius: 5px;
+    height: 52px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background: #B1B5C3;
+    border-radius: 2px;
 }

@@ -2,6 +2,7 @@ import { useLogin, useNotify } from 'react-admin'
 import PrimaryButton from '../primaryButton'
 import { useState } from 'react'
 import EyeOpenIcon from '../../icons/eyeOpenIcon'
+import Input from '../input'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
@@ -21,37 +22,33 @@ const LoginForm = () => {
       className="flex flex-col gap-6 mt-12"
       onSubmit={handleSubmit}
     >
-      <div className="flex flex-col gap-2">
-        <label htmlFor="email">Email</label>
-        <input
-          placeholder="Enter your email"
-          className="rounded-lg border border-lightGray px-4 py-3.5 text-14 text-text bg-white"
-          name="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label htmlFor="password">Password</label>
-        <div className="relative w-full">
-          <input
-            className="rounded-lg border border-lightGray px-4 py-3.5 text-14 text-text bg-white w-full"
-            name="password"
-            type={isViewPassword ? 'text' : 'password'}
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div
-            className="text-bgGray loginform-eye w-max flex items-center justify-center cursor-pointer active:text-textGray transition-all"
-            onMouseDown={() => setIsViewPassword(true)}
-            onMouseUp={() => setIsViewPassword(false)}
-          >
-            <EyeOpenIcon />
-          </div>
+      <Input
+        name="email"
+        label="Email"
+        placeholder="Enter your email"
+        type="email"
+        value={email}
+        setValue={setEmail}
+        className="px-4 py-3.5 text-14-20"
+      />
+      <Input
+        name="password"
+        label="Password"
+        placeholder="Enter your password"
+        type={isViewPassword ? 'text' : 'password'}
+        value={password}
+        setValue={setPassword}
+        className="px-4 py-3.5 text-14-20"
+      >
+        <div
+          className="text-bgGray loginform-eye w-max flex items-center justify-center
+                    cursor-pointer active:text-textGray transition-all"
+          onMouseDown={() => setIsViewPassword(true)}
+          onMouseUp={() => setIsViewPassword(false)}
+        >
+          <EyeOpenIcon />
         </div>
-      </div>
+      </Input>
       <PrimaryButton className="mt-27">Login</PrimaryButton>
     </form>
   )

@@ -10,6 +10,8 @@ module.exports = {
         xxl: '1440px',
       },
       spacing: {
+        '46': '11.5rem',
+        dropdownArrow: '17px',
         '96': '24rem',
         '27': '6.75rem',
         '28.5': '7.125rem',
@@ -53,7 +55,12 @@ module.exports = {
         '3ch': '3ch',
         half: '50%',
         full: '100%',
-        xxl: '1440px'
+        xxl: '1440px',
+        '63': '15.75rem',
+        '51': '12.75rem',
+        '42': '10.5rem',
+        '38': '9.5rem',
+        '50': '12.5rem',
       },
       colors: {
         main: '#3626A7',
@@ -65,9 +72,13 @@ module.exports = {
       },
       fontSize: {
         32: ['32px', '40px'],
-        14: ['14px', '20px']
-      }
-
+        '14-20': ['14px', '20px'],
+        '14-24': ['14px', '24px'],
+        '18-24': ['18px', '24px']
+      },
+      gridTemplateColumns: {
+        'max-minmax': 'max-content  minmax(0, 1fr)',
+      },
     },
   },
   plugins: [],

@@ -23,7 +23,7 @@ export const authProvider: AuthProvider = {
         }
         console.log(response)
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        return JSON.stringify(decodeJwt(response.data.accessToken))
+        return JSON.stringify(response.data.accessToken)
       })
       .then((token) => {
         localStorage.setItem('token', token)
@@ -36,12 +36,12 @@ export const authProvider: AuthProvider = {
     return localStorage.getItem('token') ? Promise.resolve() : Promise.reject()
   },
   logout: () => {
-    // const info = JSON.parse(localStorage.getItem('token'))
+    // const token = JSON.parse(localStorage.getItem('token'))
 
     // const request = {
     //   url: 'http://3.65.149.62/test-api/auth/logout',
     //   params: {
-    //     token: info.tokenId,
+    //     token,
     //   },
     // }
 
@@ -49,11 +49,14 @@ export const authProvider: AuthProvider = {
     //   if (response.status < 200 || response.status >= 300) {
     //     throw new Error(response.data.message)
     //   }
-    //   console.log(response)
+
     //   localStorage.removeItem('token')
     //   localStorage.removeItem('user')
+    //   console.log(response)
     // })
 
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
     return Promise.resolve()
   },
   getIdentity: () => {
