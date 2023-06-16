@@ -17,16 +17,21 @@ export const MyMenu = () => {
   const [activeLocation, setActiveLocation] = useStore('activeLocation', '')
 
   const filtersCount = useMemo(() => {
-    console.log(job.length, activeIndustry.length, activeLocation.length)
     let count = 0
-    if (job.length) count + 1
-    if (activeLocation.length) count + 1
-    activeIndustry.length && count + 1
+    const arr = new Array(
+      job.length,
+      activeIndustry.length,
+      activeLocation.length
+    )
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > 0) {
+        count++
+      }
+    }
 
     return count
   }, [job, activeLocation, activeIndustry])
 
-  console.log(filtersCount)
   const token = localStorage.getItem('token')
 
   useEffect(() => {
@@ -52,9 +57,17 @@ export const MyMenu = () => {
     <div className="w-63 border-l-0 border border-gray border-y-0">
       <div className="p-4">
         <Logo />
-        <h2 className="mt-[50px] text-text text-18-24 font-semibold">
-          Filters
-        </h2>
+        <div className="flex items-center justify-between w-full mt-[50px]">
+          <div className=" text-text flex items-center gap-5-px">
+            <h2 className="text-18-24 font-semibold">Filters</h2>
+            <div className="text-12-12 bg-gray rounded-30 px-3 py-1">
+              {filtersCount}
+            </div>
+          </div>
+          <div className="text-main text-14-24 cursor-pointer">
+            Clear filters
+          </div>
+        </div>
       </div>
       <div className="border-y-gray py-4 border-x-0 border p-4 flex flex-col gap-4">
         <Input

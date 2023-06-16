@@ -61,6 +61,7 @@ module.exports = {
         '42': '10.5rem',
         '38': '9.5rem',
         '50': '12.5rem',
+        '5-px': '5px',
       },
       colors: {
         main: '#3626A7',
@@ -74,11 +75,15 @@ module.exports = {
         32: ['32px', '40px'],
         '14-20': ['14px', '20px'],
         '14-24': ['14px', '24px'],
-        '18-24': ['18px', '24px']
+        '18-24': ['18px', '24px'],
+        '12-12': ['12px', '12px'],
       },
       gridTemplateColumns: {
         'max-minmax': 'max-content  minmax(0, 1fr)',
       },
+      borderRadius: {
+        30: '30px'
+      }
     },
   },
   plugins: [],

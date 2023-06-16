@@ -23,7 +23,7 @@ const Dropdown = ({
   const containterRef = useRef() as MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
-    if (!value.length) setActiveItem('')
+    if (!value.length && !isOpen) setActiveItem('')
   }, [value])
 
   useEffect(() => {
