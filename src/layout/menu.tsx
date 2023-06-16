@@ -13,21 +13,15 @@ export const MyMenu = () => {
   const [job, setJob] = useStore('job', '')
   const [locations, setLocations] = useStore('locations', [])
   const [industries, setIndustries] = useStore('industries', [])
-  const [activeIndustry, setActiveIndustry] = useStore('activeIndustry', '')
-  const [activeLocation, setActiveLocation] = useStore('activeLocation', '')
+  const [activeIndustry, setActiveIndustry] = useStore('activeIndustry', null)
+  const [activeLocation, setActiveLocation] = useStore('activeLocation', null)
 
   const filtersCount = useMemo(() => {
     let count = 0
-    const arr = new Array(
-      job.length,
-      activeIndustry.length,
-      activeLocation.length
-    )
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] > 0) {
-        count++
-      }
-    }
+    const arr = new Array(job.length, activeIndustry, activeLocation)
+    arr.forEach((item) => {
+      if (item) count++
+    })
 
     return count
   }, [job, activeLocation, activeIndustry])
@@ -82,6 +76,7 @@ export const MyMenu = () => {
         />
         <Line />
         <Dropdown
+          activeItem={activeLocation}
           setActiveItem={setActiveLocation}
           itemList={locations}
           label="Location"
@@ -91,6 +86,7 @@ export const MyMenu = () => {
         />
         <Line />
         <Dropdown
+          activeItem={activeIndustry}
           setActiveItem={setActiveIndustry}
           itemList={industries}
           label="Industry"

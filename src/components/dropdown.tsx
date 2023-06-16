@@ -9,11 +9,13 @@ const Dropdown = ({
   iconLabel,
   itemList,
   setActiveItem,
+  activeItem,
 }: {
   label: string
   name: string
   placeholder: string
-  setActiveItem: (arg: string) => void
+  activeItem: any
+  setActiveItem: (arg: any) => void
   itemList: { name: string; id: string }[]
   iconLabel?: React.ReactNode
 }) => {
@@ -23,8 +25,18 @@ const Dropdown = ({
   const containterRef = useRef() as MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
-    if (!value.length && !isOpen) setActiveItem('')
-  }, [value])
+    if (
+      !value.length ||
+      (activeItem && value.toLowerCase() !== activeItem?.name.toLowerCase())
+    )
+      setActiveItem('')
+
+    if (
+      filteredList[0]?.name &&
+      value.toLowerCase() === filteredList[0].name.toLocaleLowerCase()
+    )
+      setActiveItem(filteredList[0])
+  }, [value, activeItem])
 
   useEffect(() => {
     const handelClickOutside = (e: MouseEvent) => {
@@ -51,9 +63,9 @@ const Dropdown = ({
     [value]
   )
 
-  const handleChoose = (id: string, name: string) => {
+  const handleChoose = (item: any, name: string) => {
     setValue(name)
-    setActiveItem(id)
+    setActiveItem(item)
     setIsOpen(false)
   }
 
@@ -100,11 +112,13 @@ const Dropdown = ({
                 <div
                   onClick={() =>
                     handleChoose(
-                      item.id,
+                      item,
                       item.name.charAt(0).toUpperCase() + item.name.slice(1)
                     )
                   }
-                  className="cursor-pointer hover:text-main truncate  w-50 "
+                  className={`cursor-pointer hover:text-main truncate w-50 ${
+                    item.name === activeItem?.name && 'text-main font-semibold'
+                  }`}
                   key={item.id}
                 >
                   {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
